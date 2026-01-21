@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu_latest
     steps:
     - uses: actions/checkout@v4
     
@@ -16,9 +16,9 @@ jobs:
       with:
         python-version: '3.11'
         
-    - name: Install dependencies
-      run pip install --no-cache-dir pytest black flake8 pytest-cov coverage \  
-          fastapi uvicorn[standard] httpx
+     - name: Install dependencies
+       run: pip install --no-cache-dir pytest black flake8 pytest-cov coverage  \
+           fastapi uvicorn[standard] httpx
         
     - name: Lint with Black
       run: black --check .
@@ -52,4 +52,3 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
-
