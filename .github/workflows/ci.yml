@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
-    - run: pip install pytest black fake8
+    - run: pip install pytest black flake8
     - run: black --check
     - run: flake8 .
     - run: pytest --cov-report=xml
