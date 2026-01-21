@@ -8,33 +8,32 @@ jobs:
     permissions:
       contents: read
       packages: write
-
+    runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: Docker meta
-sha-abc123
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images:
+        images: |
           ghcr.io/${{ github.repository }}
-          ${{ github.repository }}
- 
-   - name: Log into GHCR
-Registry:
+          docker.io/hurmaao/mini-service
+    - name: Log into GHCR
       uses: docker/login-action@v3
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
+    
     - name: Log into Docker Hub
-    uses: docker/login-action@v3 
-    with:
-      username: ${{ secrets.DOCKERHUB_USERNAME }}
-      password: ${{ secrets.DOCKERHUB_TOKEN }}
-
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
+
