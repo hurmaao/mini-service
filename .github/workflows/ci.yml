@@ -17,7 +17,8 @@ jobs:
         python-version: '3.11'
         
     - name: Install dependencies
-      run: pip install pytest black flake8 coverage pytest-cov fastapi uvicorn httpx
+      run pip install --no-cache-dir pytest black flake8 pytest-cov coverage \
+      fastapi uvicorn[standard] httpx
         
     - name: Lint with Black
       run: black --check .
