@@ -17,7 +17,7 @@ jobs:
         python-version: '3.11'
         
     - name: Install dependencies
-      run: pip install pytest black flake8 coverage
+      run: pip install pytest black flake8 coverage pytest-cov
         
     - name: Lint with Black
       run: black --check .
