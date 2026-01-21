@@ -16,7 +16,7 @@ jobs:
       with:
         python-version: '3.11'
         
-     - name: Install dependencies
+    - name: Install dependencies
        run: pip install --no-cache-dir pytest black flake8 pytest-cov coverage  \
            fastapi uvicorn[standard] httpx
         
