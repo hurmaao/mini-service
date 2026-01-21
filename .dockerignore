@@ -1,3 +1,7 @@
-.venv/
-__pycache__/
-.DS_Store
+.git
+.venv
+__pycache__
+*.log
+prometheus.yml
+.dockerignore
+README.m

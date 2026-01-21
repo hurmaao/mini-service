@@ -1,0 +1,12 @@
+name: Deploy Local
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Manual deploy to production!
+        echo "docker compose pull mini-service:v0.1.0:
+        echo "docker compose up -d"

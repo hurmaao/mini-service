@@ -1,19 +1,19 @@
-from prometheus_client import make_asgi_app
+from prometheus_fastapi_instrumentator import Instrumentator
 from fastapi import FastAPI, Response, status
 import time
 import os
 
-app = FastAPI()
+app = FastAPI(redirect_slashes=False)
 
-metrics_app = make_asgi_app()
-app.mount("/metrics", metrics_app)
+Instrumentator().instrument(app).expose(app)
+
 
 @app.get("/")
 def root():
-    return {"ststus": "ok", "message": "mini service is running"}
+    return {"status": "ok", "message": "mini service is running"}
 
 @app.get("/health")
-def health(fail: bool = False, response: Response = None):
+def health(response: Response, fail: bool = False):
     if fail:
         response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
         return {"status": "unhealthy"}

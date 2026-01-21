@@ -1,0 +1,12 @@
+route:
+  receiver: telegram_webhook
+
+receivers:
+- name: telegram_webhook
+  webhook_configs: 
+  - url: "http://telegram-webhook:9119/alert"
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: "admin"
+        password: "12345"

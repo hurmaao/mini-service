@@ -1,0 +1,11 @@
+groups:
+- name: mini-service-alerts
+  rules:
+  - alert: mini-service Down
+    expr: up{job="mini-service"} == 0
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "mini sevice is unavailable"
+      description: "Prometheus has been unable to collect metrics for 2 minutes"  

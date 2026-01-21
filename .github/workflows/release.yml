@@ -1,0 +1,40 @@
+name: Release Docker image
+on:
+  push:
+    tags: [ 'v*' ]
+
+jobs:
+  release:
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: Docker meta
+sha-abc123
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images:
+          ghcr.io/${{ github.repository }}
+          ${{ github.repository }}
+ 
+   - name: Log into GHCR
+Registry:
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Log into Docker Hub
+    uses: docker/login-action@v3 
+    with:
+      username: ${{ secrets.DOCKERHUB_USERNAME }}
+      password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
