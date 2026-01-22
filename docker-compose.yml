@@ -19,7 +19,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      grafana-storage:
+      - grafana-storage:/var/lib/grafana
 
   alertmanager:
     image: prom/alertmanager
@@ -38,3 +38,6 @@ services:
       BASIC_AUTH_PASSWORD: "12345"
     ports:
       - "8081:9119"
+
+volumes:
+  grafana-storage:
