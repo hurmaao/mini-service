@@ -38,3 +38,7 @@ CI/CD Pipeline
 - **BUILDX - META**
 - **META - BUILD**
 - **BUILD - SUCCESS**
+
+  <img width="1470" height="956" alt="Снимок экрана 2026-01-22 в 14 59 22" src="https://github.com/user-attachments/assets/7835d8dc-e9d3-4a3c-9a73-0f22d2e2ec37" />
+<img width="1470" height="956" alt="Снимок экрана 2026-01-22 в 15 07 37" src="https://github.com/user-attachments/assets/91bf4380-e2e6-487b-9edf-5c5032d3054d" />
+
